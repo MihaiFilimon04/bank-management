@@ -1,14 +1,11 @@
-
-// Bank Management System
-
-#include <stdio.h>  //printf(),scanf()
-#include <stdlib.h> //exit(0),system()
-#include <conio.h>  //getch()
-#include <time.h>   //time(),ctime()
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <time.h>
 char name[20];
-int dip_amt, amt = 10000, acc_no, ac, count = 0; // Global variables
-int trans_amt;
-int with_amt;
+int dip_amount, amount = 10000, acc_no, ac, count = 0;
+int trans_amount;
+int with_amount;
 
 void deposit_money();
 void withdraw_money();
@@ -18,18 +15,16 @@ void LastDetail();
 void transaction_details();
 void menu();
 
-void divider()
+void separator()
 {
     for (int i = 0; i < 50; i++)
     {
         printf("-");
     }
 }
-
-//#Driver function
 int main()
 {
-    FILE *ptr = fopen("Account.txt", "w");
+    FILE *ptr = fopen("account_details", "w");
 
     int ch;
     printf("Enter your name : \n");
@@ -38,7 +33,6 @@ int main()
     printf("Enter your account no. : ");
     scanf("%d", &acc_no);
     fprintf(ptr, "Account no. : %d\n", acc_no);
-
     fclose(ptr);
     while (1)
     {
@@ -87,20 +81,18 @@ void menu()
 {
 
     system("cls");
-    divider();
+    separator();
     printf("\n\tMENU\n");
-
-    divider();
+    separator();
     printf("\n1.Deposit Money\n");
     printf("2.Withdraw Money\n");
     printf("3.Transfer Money\n");
     printf("4.Account details\n");
     printf("5.Transaction details\n");
     printf("6.Exit\n");
-    divider();
+    separator();
 }
 
-//!---------------------------------------------------------
 void deposit_money()
 {
 
@@ -110,15 +102,15 @@ void deposit_money()
     printf("*****DEPOSITING MONEY*****\n");
     for (int i = 0; i < 50; i++)
     {
-        printf("-");
+        printf("-"); /// to look decent
     }
 
     printf("\nEnter the amount you want to deposit\n");
-    scanf("%d", &dip_amt);
-    amt += dip_amt;
+    scanf("%d", &dip_amount);
+    amount += dip_amount;
     printf("****Money Deposited****\n");
-    printf("Now balance : %d\n", amt);
-    fprintf(ptr, "\nRs%d had been deposited to your account \n", dip_amt);
+    printf("Now balance : %d\n", amount);
+    fprintf(ptr, "\nRs%d had been deposited to your account \n", dip_amount);
     fprintf(ptr, "Date/Time of transaction :  %s\n", ctime(&tm));
     count++;
 
@@ -126,9 +118,6 @@ void deposit_money()
     printf("Press any key....\n");
     getch();
 }
-
-//!---------------------------------------------------------
-
 void withdraw_money()
 {
 
@@ -142,18 +131,18 @@ void withdraw_money()
     }
 
     printf("\nEnter the amount you want to withdraw\n");
-    scanf("%d", &with_amt);
+    scanf("%d", &with_amount);
 
-    if (amt < with_amt)
+    if (amount < with_amount)
     {
         printf("****Insufficient balance****\n");
     }
     else
     {
-        amt = amt - with_amt;
+        amount = amount - with_amount;
         printf("*****Money withdrawn*****\n");
-        printf("Current balance : %d\n", amt);
-        fprintf(ptr, "\nRs%d had been withdrawn from your account \n", with_amt);
+        printf("Current balance : %d\n", amount);
+        fprintf(ptr, "\nRs%d had been withdrawn from your account \n", with_amount);
         fprintf(ptr, "Date/Time of transaction :  %s\n", ctime(&tm));
         count++;
     }
@@ -162,8 +151,6 @@ void withdraw_money()
 
     getch();
 }
-
-//!---------------------------------------------------------
 
 void transfer_money()
 {
@@ -180,18 +167,18 @@ void transfer_money()
     printf("\nEnter the account no. in which you want to transfer the money : ");
     scanf("%d", &ac);
     printf("\nEnter the amount you want to transfer\n");
-    scanf("%d", &trans_amt);
+    scanf("%d", &trans_amount);
 
-    if (amt < trans_amt)
+    if (amount < trans_amount)
     {
         printf("****You have not sufficient balance****\n");
     }
     else
     {
-        amt = amt - trans_amt;
+        amount = amount - trans_amount;
         printf("****Money Transferred****\n");
-        printf("Current balance : %d\n", amt);
-        fprintf(ptr, "\nRs%d had been transferred from your account to %d\n", trans_amt, ac);
+        printf("Current balance : %d\n", amount);
+        fprintf(ptr, "\nRs%d had been transferred from your account to %d\n", trans_amount, ac);
         fprintf(ptr, "Date/Time of transaction :  %s\n", ctime(&tm));
         count++;
     }
@@ -199,8 +186,6 @@ void transfer_money()
     printf("Press any key....\n");
     getch();
 }
-
-//!---------------------------------------------------------
 
 void checkDetail()
 {
@@ -212,13 +197,11 @@ void checkDetail()
 
     printf("\nName : %s\n", name);
     printf("Account No. : %d\n", acc_no);
-    printf("Total balance = %d\n ", amt);
+    printf("Total balance = %d\n ", amount);
     printf("\n%d transactions have been made from your account \n", count);
     printf("Press any key.....");
     getch();
 }
-
-//!---------------------------------------------------------
 
 void transaction_details()
 {
@@ -231,15 +214,15 @@ void transaction_details()
     if (c == EOF)
     {
         printf("TRANSACTION DETAILS\n");
-        divider();
+        separator();
         printf("\n*******NO RECENT TRANSACTION*******\n");
     }
     else
     {
         printf("TRANSACTION DETAILS\n");
-        divider();
+        separator();
         printf("\n%d transactions have been made from your account \n", count);
-        while (c != EOF) // EOF=End of file
+        while (c != EOF)
         {
             printf("%c", c);
             c = fgetc(ptr);
@@ -248,8 +231,6 @@ void transaction_details()
 
     getch();
 }
-
-//!---------------------------------------------------------
 
 void LastDetail()
 {
@@ -260,7 +241,7 @@ void LastDetail()
     }
     printf("\nName : %s\n", name);
     printf("Account No. : %d\n", acc_no);
-    printf("Total balance = %d\n ", amt);
+    printf("Total balance = %d\n ", amount);
 
     printf("\n\nPress any key to exit.....");
     getch();
