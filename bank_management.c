@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <time.h>
 char name[20];
-int dip_amount, amount = 10000, acc_no, ac, count = 0;
+int dip_amount, amount = 0, acc_no, ac, count = 0;
 int trans_amount;
 int with_amount;
 
