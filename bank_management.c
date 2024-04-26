@@ -110,7 +110,7 @@ void deposit_money()
     amount += dip_amount;
     printf("****Money Deposited****\n");
     printf("Now balance : %d\n", amount);
-    fprintf(ptr, "\nRs%d had been deposited to your account \n", dip_amount);
+    fprintf(ptr, "\n%d had been deposited to your account \n", dip_amount);
     fprintf(ptr, "Date/Time of transaction :  %s\n", ctime(&tm));
     count++;
 
@@ -142,7 +142,7 @@ void withdraw_money()
         amount = amount - with_amount;
         printf("*****Money withdrawn*****\n");
         printf("Current balance : %d\n", amount);
-        fprintf(ptr, "\nRs%d had been withdrawn from your account \n", with_amount);
+        fprintf(ptr, "\n%d had been withdrawn from your account \n", with_amount);
         fprintf(ptr, "Date/Time of transaction :  %s\n", ctime(&tm));
         count++;
     }
@@ -178,7 +178,7 @@ void transfer_money()
         amount = amount - trans_amount;
         printf("****Money Transferred****\n");
         printf("Current balance : %d\n", amount);
-        fprintf(ptr, "\nRs%d had been transferred from your account to %d\n", trans_amount, ac);
+        fprintf(ptr, "\n%d had been transferred from your account to %d\n", trans_amount, ac);
         fprintf(ptr, "Date/Time of transaction :  %s\n", ctime(&tm));
         count++;
     }
