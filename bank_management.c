@@ -6,7 +6,7 @@ char name[20];
 int dip_amount, amount = 0, acc_no, ac, count = 0;
 int trans_amount;
 int with_amount;
-
+int test_amount;
 void deposit_money();
 void withdraw_money();
 void transfer_money();
